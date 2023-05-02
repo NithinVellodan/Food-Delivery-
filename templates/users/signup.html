@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% load static %}
+    <meta charset="UTF-8" />
+    <title>Sign Up</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+      rel="stylesheet"
+      integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="{% static 'css/auth_style.css' %}" />
+  </head>
+  <body>
+    <div class="box-form">
+      <div class="left">
+        <div class="overlay">
+          <h1>Food Management Application</h1>
+          <p>“Tell me what you eat, and I will tell you who you are.”</p>
+        </div>
+      </div>
+
+      <div class="right">
+        <h5>SignUp</h5>
+
+        <form action="" method="post">
+            {% csrf_token %}
+            {% for field in form %}
+                <div class="input_container">
+                    <label for="{{field.id_for_label}}"> {{field.label}} </label>
+                    {{field}}
+                </div>
+            {% endfor %}
+            {% if error %}
+                <p class="error-message">{{message}}</p>
+            {% endif %}
+                <button type="submit">Create Account</button>
+            <a href="{% url 'users:login' %}">Login</a>
+          </div>
+        </form>
+
+        {% comment %}
+        <div class="inputs">
+          <input type="text" placeholder="user name" />
+          <br />
+          <input type="password" placeholder="password" />
+        </div>
+
+        <br /><br />
+
+        <div class="remember-me--forget-password">
+          <p>forget password?</p>
+        </div>
+
+        <br />
+        <button>Login</button> {% endcomment %}
+      </div>
+    </div>
+  </body>
+</html>
